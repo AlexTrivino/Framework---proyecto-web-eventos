@@ -104,7 +104,7 @@ export default function Registro() {
   return (
     <form onSubmit={handleSubmit} id="registroForm">
 
-      <img src="../Imagenes/1.png" width="150px" alt="Logo" />
+      <img src="/1.png" width="150px" alt="Logo" />
       <h1>Registro</h1>
 
       <InputField
@@ -165,7 +165,7 @@ export default function Registro() {
 
       <button type="submit">Registrarse</button>
 
-      <p>¿Ya tienes cuenta? <a href="../login/login.html">Inicia Sesión</a></p>
+      <p>¿Ya tienes cuenta? <a href=" ">Inicia Sesión</a></p>
 
     </form>
   );

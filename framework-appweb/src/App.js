@@ -1,11 +1,13 @@
 import React from 'react';
-import Registro from './ComponenteRegistro/Registro';
-import './App.css';  // Si quieres mantener tus estilos globales
+import Registro from './Componentes/ComponenteRegistro/Registro';
+import Evento from './Componentes/ComponenteEvento/Evento';
+import './App.css'; 
 
 function App() {
   return (
     <div className="App">
       <Registro />
+      <Evento />
     </div>
   );
 }
