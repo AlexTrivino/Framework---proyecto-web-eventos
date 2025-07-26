@@ -1,0 +1,95 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #EEF2E3 ;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+  }
+h1 {
+  text-align: center;
+}
+
+label{
+  font-size: 14px;
+  padding: 10px;
+  
+}
+form {
+    background: #fff;
+    font-size: 15px;
+    padding: 10px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 500px ;
+}
+
+input {
+    width: 100%;
+    padding: 12px 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+img{
+  display: block;
+  margin: 0 auto;
+  height: auto;    
+}
+
+
+.error {
+    color: red;
+    font-size: 0.85em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.input-error {
+    border-color: red;
+}
+
+#usernameFeedback, #strengthText {
+    font-size: 0.85em;
+    margin-bottom: 5px;
+    text-align: left;
+    display: block;
+}
+
+.valido {
+    color: green;
+}
+
+.invalido {
+    color: red;
+}
+
+#strengthMeter {
+    width: 100%;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #5F7568;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+button:hover{
+    background-color: #a1b3a9;
+}
