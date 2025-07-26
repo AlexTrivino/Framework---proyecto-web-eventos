@@ -1,5 +1,5 @@
 import React from 'react';
-import Registro from './Componentes/Registro';
+import Registro from './ComponenteRegistro/Registro';
 import './App.css';  // Si quieres mantener tus estilos globales
 
 function App() {
