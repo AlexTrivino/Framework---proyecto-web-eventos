@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.crear-evento-page {
+  font-family: 'Poppins', sans-serif;
+  background-color: #EEF2E3;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.crear-evento-page img {
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.crear-evento-page .container {
+  max-width: 600px;
+  margin: auto;
+  background: rgb(174, 216, 191);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.crear-evento-page h1 {
+  text-align: center;
+  color: #000000;
+}
+
+.crear-evento-page label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.crear-evento-page input,
+.crear-evento-page textarea,
+.crear-evento-page select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.crear-evento-page button {
+  margin-top: 20px;
+  background-color: #5d8e70;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.crear-evento-page button:hover {
+  background-color: #4c6054;
+}
+
+.crear-evento-page #mensaje {
+  margin-top: 15px;
+  color: green;
+  text-align: center;
+  font-weight: bold;
+}
+
+.crear-evento-page footer {
+  background-color: #BFD8B8;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+  color: #333;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
