@@ -1,10 +1,13 @@
-body {
+.contenedor-registro {
+    padding-top: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #EEF2E3 ;
     align-items: center;
+    min-height: 100vh;
     justify-content: center; 
     display: flex;
-  }
+}
+
 h1 {
   text-align: center;
 }
@@ -14,7 +17,8 @@ label{
   padding: 10px;
   
 }
-form {
+
+.form-registro {
     background: #fff;
     font-size: 15px;
     padding: 10px 30px;
@@ -80,7 +84,7 @@ img{
     transition: width 0.3s ease, background 0.3s ease;
 }
 
-button {
+.button-registro {
     width: 100%;
     padding: 12px;
     background-color: #5F7568;
@@ -90,6 +94,6 @@ button {
     font-size: 1em;
 }
 
-button:hover{
+.button-registro:hover{
     background-color: #a1b3a9;
 }

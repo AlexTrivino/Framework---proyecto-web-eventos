@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.proveedor-container {
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(174, 216, 191);
+  width: 100%;
+  max-width: 700px;
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+.proveedor-container img {
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.proveedor-container h1 {
+  text-align: center;
+  color: #000000;
+}
+
+.proveedor-container label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.proveedor-container input,
+.proveedor-container select,
+.proveedor-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #e1d3d3;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.proveedor-container button {
+  margin-top: 20px;
+  background-color: #5d8e70;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.proveedor-container button:hover {
+  background-color: #4c6054;
+}
+
+.proveedor-container #mensaje {
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.proveedor-container footer {
+  background-color: var(--verde);
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+  color: var(--negro);
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
