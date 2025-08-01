@@ -20,6 +20,7 @@
       font-family:'Poppins', sans-serif;
       text-align: center;
     }
+
     .header-index h1 {
       font-size: 3em;
       margin: 0;
@@ -219,4 +220,4 @@
     .gatito-container button:hover {
       background-color: #7ebd92;
     }
-  
+ 
