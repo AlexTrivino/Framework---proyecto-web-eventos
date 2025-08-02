@@ -19,10 +19,15 @@ function RegistrarseEventos() {
   const [eventos, setEventos] = useState([]);
   const [botonActivo, setBotonActivo] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [eventosRegistrados, setEventosRegistrados] = useState([]);
 
+  // Cargar eventos y registros previos
   useEffect(() => {
     const eventosGuardados = JSON.parse(localStorage.getItem('eventos')) || [];
+    const registradosGuardados = JSON.parse(localStorage.getItem('eventosRegistrados')) || [];
+
     setEventos(eventosGuardados);
+    setEventosRegistrados(registradosGuardados);
   }, []);
 
   const handleClick = (id) => {
@@ -32,13 +37,9 @@ function RegistrarseEventos() {
 
   const confirmarRegistro = () => {
     if (botonActivo !== null) {
-      const boton = document.getElementById(`btn-${botonActivo}`);
-      if (boton) {
-        boton.disabled = true;
-        boton.textContent = 'Registrado';
-        boton.style.backgroundColor = '#ccc';
-        boton.style.cursor = 'not-allowed';
-      }
+      const nuevosRegistrados = [...eventosRegistrados, botonActivo];
+      setEventosRegistrados(nuevosRegistrados);
+      localStorage.setItem('eventosRegistrados', JSON.stringify(nuevosRegistrados));
     }
     setModalVisible(false);
   };
@@ -53,22 +54,27 @@ function RegistrarseEventos() {
       <section className="registro-eventos">
         <div className="galeria-eventos">
           {eventos.length > 0 ? (
-            eventos.map(evento => (
-              <div className="evento-card" key={evento.id}>
-                <img src={imagenesMap[evento.imagen] || evento.imagen} alt={evento.titulo} />
-                <h3>{evento.titulo}</h3>
-                <p>📍 {evento.lugar}</p>
-                <p>📅 {evento.fecha} ⏰ {evento.hora}</p>
-                <p>👤 Organizado por: {evento.organizador}</p>
-                <button
-                  id={`btn-${evento.id}`}
-                  className="btn-registrarse"
-                  onClick={() => handleClick(evento.id)}
-                >
-                  Registrarse
-                </button>
-              </div>
-            ))
+            eventos.map(evento => {
+              const estaRegistrado = eventosRegistrados.includes(evento.id);
+              return (
+                <div className="evento-card" key={evento.id}>
+                  <img src={imagenesMap[evento.imagen] || evento.imagen} alt={evento.titulo} />
+                  <h3>{evento.titulo}</h3>
+                  <p>📍 {evento.lugar}</p>
+                  <p>📅 {evento.fecha} ⏰ {evento.hora}</p>
+                  <p>👤 Organizado por: {evento.organizador}</p>
+                  <button
+                    id={`btn-${evento.id}`}
+                    className="btn-registrarse"
+                    onClick={() => handleClick(evento.id)}
+                    disabled={estaRegistrado}
+                    style={estaRegistrado ? { backgroundColor: '#ccc', cursor: 'not-allowed' } : {}}
+                  >
+                    {estaRegistrado ? 'Registrado' : 'Registrarse'}
+                  </button>
+                </div>
+              );
+            })
           ) : (
             <p>No hay eventos disponibles para registrarse.</p>
           )}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../assets/img/logo.png';
 import '../styles/registroProveedor.css';
 
@@ -12,8 +12,14 @@ function RegistroProveedor() {
     descripcion: ''
   });
 
+  const [proveedores, setProveedores] = useState([]);
   const [mensaje, setMensaje] = useState('');
   const [colorMensaje, setColorMensaje] = useState('');
+
+  useEffect(() => {
+    const datosGuardados = JSON.parse(localStorage.getItem('proveedores')) || [];
+    setProveedores(datosGuardados);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +38,7 @@ function RegistroProveedor() {
     }
 
     if (!/^\d{7,10}$/.test(telefono)) {
-      setMensaje('Ingrese un número de teléfono válido (solo números, de 10 dígitos).');
+      setMensaje('Ingrese un número de teléfono válido (7 a 10 dígitos).');
       setColorMensaje('red');
       return;
     }
@@ -43,7 +49,21 @@ function RegistroProveedor() {
       return;
     }
 
-    setMensaje('¡Formulario enviado correctamente!');
+    const nuevoProveedor = {
+      id: Date.now(),
+      nombre,
+      contacto,
+      correo,
+      telefono,
+      categoria,
+      descripcion
+    };
+
+    const listaActualizada = [...proveedores, nuevoProveedor];
+    setProveedores(listaActualizada);
+    localStorage.setItem('proveedores', JSON.stringify(listaActualizada));
+
+    setMensaje('¡Proveedor registrado correctamente!');
     setColorMensaje('green');
     setFormData({
       nombre: '',
@@ -55,44 +75,71 @@ function RegistroProveedor() {
     });
   };
 
+  const eliminarProveedor = (id) => {
+    const listaFiltrada = proveedores.filter(p => p.id !== id);
+    setProveedores(listaFiltrada);
+    localStorage.setItem('proveedores', JSON.stringify(listaFiltrada));
+  };
+
   return (
-    <div style={{ backgroundColor: '#EEF2E3', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <div className="proveedor-container" style={{ flex: '1' }}>
-        <img src={logo} alt="Logo" width="150px" />
-        <h1>Registro de Proveedores</h1>
-        <form onSubmit={handleSubmit}>
-          <label>Nombre de la empresa o proveedor:</label>
-          <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} required />
+    <div className="proveedor-page">
+      <div className="proveedor-layout">
+        {/* FORMULARIO */}
+        <div className="proveedor-container">
+          <img src={logo} alt="Logo" width="120px" />
+          <h1>Registro de Proveedores</h1>
+          <form onSubmit={handleSubmit}>
+            <label>Nombre de la empresa o proveedor:</label>
+            <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} required />
 
-          <label>Nombre de contacto:</label>
-          <input type="text" name="contacto" value={formData.contacto} onChange={handleChange} required />
+            <label>Nombre de contacto:</label>
+            <input type="text" name="contacto" value={formData.contacto} onChange={handleChange} required />
 
-          <label>Correo electrónico:</label>
-          <input type="email" name="correo" value={formData.correo} onChange={handleChange} required />
+            <label>Correo electrónico:</label>
+            <input type="email" name="correo" value={formData.correo} onChange={handleChange} required />
 
-          <label>Teléfono:</label>
-          <input type="tel" name="telefono" value={formData.telefono} maxLength="10" onChange={handleChange} required />
+            <label>Teléfono:</label>
+            <input type="tel" name="telefono" value={formData.telefono} maxLength="10" onChange={handleChange} required />
 
-          <label>Categoría del servicio:</label>
-          <select name="categoria" value={formData.categoria} onChange={handleChange} required>
-            <option value="">Seleccione una opción</option>
-            <option value="Catering">Catering</option>
-            <option value="Logística">Logística</option>
-            <option value="Decoración">Decoración</option>
-            <option value="Audio y Video">Audio y Video</option>
-            <option value="Otros">Otros</option>
-          </select>
+            <label>Categoría del servicio:</label>
+            <select name="categoria" value={formData.categoria} onChange={handleChange} required>
+              <option value="">Seleccione una opción</option>
+              <option value="Catering">Catering</option>
+              <option value="Logística">Logística</option>
+              <option value="Decoración">Decoración</option>
+              <option value="Audio y Video">Audio y Video</option>
+              <option value="Otros">Otros</option>
+            </select>
 
-          <label>Descripción del servicio:</label>
-          <textarea name="descripcion" rows="4" value={formData.descripcion} onChange={handleChange} required></textarea>
+            <label>Descripción del servicio:</label>
+            <textarea name="descripcion" rows="4" value={formData.descripcion} onChange={handleChange} required></textarea>
 
-          <button type="submit">Enviar</button>
-          <button type="button" onClick={() => window.location.href = '/index'}>Volver</button>
-        </form>
-        <p id="mensaje" style={{ color: colorMensaje }}>{mensaje}</p>
+            <button type="submit">Enviar</button>
+            <button type="button" onClick={() => window.location.href = '/index'}>Volver</button>
+          </form>
+          <p id="mensaje" style={{ color: colorMensaje }}>{mensaje}</p>
+        </div>
+
+        {/* LISTA */}
+        <div className="proveedor-lista">
+          <h2>Proveedores Registrados</h2>
+          {proveedores.length > 0 ? (
+            proveedores.map(prov => (
+              <div key={prov.id} className="proveedor-card">
+                <h4>{prov.nombre}</h4>
+                <p><strong>Contacto:</strong> {prov.contacto}</p>
+                <p><strong>Tel:</strong> {prov.telefono}</p>
+                <p><strong>Categoría:</strong> {prov.categoria}</p>
+                <button onClick={() => eliminarProveedor(prov.id)}>Eliminar</button>
+              </div>
+            ))
+          ) : (
+            <p className="no-proveedores">No hay proveedores registrados.</p>
+          )}
+        </div>
       </div>
 
-      <footer style={{ backgroundColor: '#B0C9A8', textAlign: 'center', padding: '20px', color: 'black', fontWeight: 'bold', fontFamily: 'Poppins, sans-serif' }}>
+      <footer className="footer-proveedor">
         &copy; 2025 UniEventos | Todos los derechos reservados
       </footer>
     </div>

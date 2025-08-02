@@ -1,16 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-.proveedor-container {
+.proveedor-page {
+  background-color: #EEF2E3;
+  min-height: 100vh;
   font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.proveedor-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding-top: 40px;
+  margin-bottom: 30px;
+}
+
+/* FORMULARIO */
+.proveedor-container {
   background-color: rgb(174, 216, 191);
-  width: 100%;
-  max-width: 700px;
-  margin: 10px auto;
+  width: 450px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-
 
 .proveedor-container img {
   display: block;
@@ -20,11 +34,12 @@
 .proveedor-container h1 {
   text-align: center;
   color: #000000;
+  margin-bottom: 15px;
 }
 
 .proveedor-container label {
   display: block;
-  margin-top: 15px;
+  margin-top: 10px;
   font-weight: bold;
 }
 
@@ -40,7 +55,7 @@
 }
 
 .proveedor-container button {
-  margin-top: 20px;
+  margin-top: 15px;
   background-color: #5d8e70;
   color: #ffffff;
   border: none;
@@ -55,18 +70,70 @@
   background-color: #4c6054;
 }
 
-.proveedor-container #mensaje {
+#mensaje {
   margin-top: 15px;
   font-weight: bold;
   text-align: center;
 }
 
-.proveedor-container footer {
-  background-color: var(--verde);
+/* LISTA */
+.proveedor-lista {
+  width: 300px;
+  background-color: #d8e6d0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.proveedor-lista h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.proveedor-card {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 14px;
+}
+
+.proveedor-card h4 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.proveedor-card button {
+  margin-top: 5px;
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.proveedor-card button:hover {
+  background-color: #b02a27;
+}
+
+.no-proveedores {
+  text-align: center;
+  font-size: 14px;
+}
+
+/* FOOTER */
+.footer-proveedor {
+  background-color: #B0C9A8;
   text-align: center;
   padding: 20px;
-  margin-top: 50px;
-  color: var(--negro);
+  color: black;
   font-weight: bold;
   font-family: 'Poppins', sans-serif;
+  margin-top: auto;
 }
