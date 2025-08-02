@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/img/logo.png';
 import '../styles/registroProveedor.css';
 
 function RegistroProveedor() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombre: '',
     contacto: '',
@@ -115,7 +117,7 @@ function RegistroProveedor() {
             <textarea name="descripcion" rows="4" value={formData.descripcion} onChange={handleChange} required></textarea>
 
             <button type="submit">Enviar</button>
-            <button type="button" onClick={() => window.location.href = '/index'}>Volver</button>
+            <button type="button" onClick={() => navigate('/index')}>Volver</button>
           </form>
           <p id="mensaje" style={{ color: colorMensaje }}>{mensaje}</p>
         </div>

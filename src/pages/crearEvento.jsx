@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/img/logo.png';
 import '../styles/crearEvento.css';
 
@@ -9,6 +10,7 @@ import exposicionImg from '../assets/img/exposicion.jpg';
 import otroImg from '../assets/img/otro.jpg';
 
 const CrearEvento = () => {
+  const navigate = useNavigate();
   const [mensaje, setMensaje] = useState('');
 
   const imagenesPorTipo = {
@@ -84,7 +86,7 @@ const CrearEvento = () => {
           <input type="text" id="organizador" name="organizador" required />
 
           <button type="submit">Crear Evento</button>
-          <button type="button" onClick={() => window.location.href = '/Index'}>
+          <button type="button" onClick={() => navigate('/index')}>
             Volver
           </button>
         </form>
